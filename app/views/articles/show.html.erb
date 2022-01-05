@@ -6,29 +6,15 @@
   <ul>
     <li><%= link_to "Edit", edit_article_path(@article) %></li>
     <li><%= link_to "Destroy", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
-    <li><%= link_to "All Posts", root_path %></li>
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %></li>
   </ul>
 
   <h2>Comments</h2>
-<% render @article.comments %>
+  <%= render @article.comments %>
 
   <h2>Add a comment:</h2>
-  <%= form_with model: [ @article, @article.comments.build ] do
-  |form| %>
-    <p>
-      <%= form.label :commenter %><br>
-      <%= form.text_field :commenter %>
-    </p>
+  <%= render 'comments/form' %>
 
-    <p>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %>
-    </p>
 
-    <p>
-      <%= form.submit %>
-    </p>
-  <% end %>
 </div>
